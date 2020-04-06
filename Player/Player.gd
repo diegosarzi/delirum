@@ -15,36 +15,57 @@ onready var animationPlayer = $AnimationPlayer
 func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_right"):
-		velocity.x = SPEED
-		$Sprite.set_flip_h(false)
-		if virar == false:
-			animationPlayer.play("virada")
-			virar = true
-		animationPlayer.queue("walk_right")
-		
+		walk_right()
 	elif Input.is_action_pressed("ui_left"):
-		velocity.x = -SPEED
-		$Sprite.set_flip_h(true)
-		if virar == false:
-			animationPlayer.play("virada")
-			virar = true
-		animationPlayer.queue("walk_right")
-			
+		walk_left()
 	else:
-		animationPlayer.play("idle")
+		if on_gound == false:
+			animationPlayer.queue('idle')
+		else:
+			animationPlayer.play("idle")
 		virar = false
 		velocity.x = 0
 		
 	if Input.is_action_pressed("ui_up"):
 		if on_gound == true:
-			velocity.y = JUMP_POWER
-			on_gound = false
+			jump()
 			
-	velocity.y += GRAVITY
-	
 	if is_on_floor():
+		if virar == false:
+			animationPlayer.play("idle")
 		on_gound = true
 	else:
 		on_gound = false
 	
+	print(velocity.y)
+	if velocity.y <= 1400 and velocity.y >= 200:
+		if !is_on_floor():
+			animationPlayer.play("jump_down")
+		
+	velocity.y += GRAVITY
 	velocity = move_and_slide(velocity, FLOOR)
+
+
+func jump():
+	velocity.y = JUMP_POWER
+	if !is_on_floor():
+		animationPlayer.play("jump")
+	on_gound = false
+	
+func walk_left():
+	velocity.x = -SPEED
+	$Sprite.set_flip_h(true)
+	if on_gound == true:	
+		if virar == false:
+			animationPlayer.play("virada")
+			virar = true
+		animationPlayer.queue("walk_right")
+	
+func walk_right():
+	velocity.x = SPEED
+	$Sprite.set_flip_h(false)
+	if on_gound == true:
+		if virar == false:
+			animationPlayer.play("virada")
+			virar = true
+		animationPlayer.queue("walk_right")
