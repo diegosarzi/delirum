@@ -13,16 +13,37 @@ position = Vector2( 1067.91, 779.362 )
 scale = Vector2( 2.53766, 2.53766 )
 texture = ExtResource( 3 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3"]
-build_mode = 1
-polygon = PoolVector2Array( -145.333, 876.218, 305.786, 854.633, 595.021, 912.912, 905.841, 997.092, 1100.1, 981.983, 1341.85, 895.644, 1525.32, 804.989, 1719.58, 746.71, 1909.53, 733.759, 2200.92, 785.562, 2468.57, 815.781, 2615.35, 835.207, 2612.53, 1639.69, -449.228, 1653.39, -445.803, 882.816 )
+[node name="Sprite2" type="Sprite" parent="StaticBody2D3"]
+position = Vector2( 4117.77, 779.362 )
+scale = Vector2( 2.53766, 2.53766 )
+texture = ExtResource( 3 )
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3"]
+position = Vector2( -1.81641, 28.6631 )
+build_mode = 1
+polygon = PoolVector2Array( -145.333, 876.218, 305.786, 854.633, 595.021, 912.912, 905.841, 997.092, 1100.1, 981.983, 1341.85, 895.644, 1525.32, 804.989, 1719.58, 746.71, 1909.53, 733.759, 2200.92, 785.562, 2407.08, 837.419, 2562.65, 879.467, 2612.53, 1639.69, -449.228, 1653.39, -445.803, 882.816 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D3"]
+position = Vector2( 3042.62, 33.2007 )
+build_mode = 1
+polygon = PoolVector2Array( -145.333, 876.218, 305.786, 854.633, 595.021, 912.912, 905.841, 997.092, 1100.1, 981.983, 1341.85, 895.644, 1525.32, 804.989, 1719.58, 746.71, 1909.53, 733.759, 2200.92, 785.562, 2468.57, 815.781, 2615.35, 835.207, 2612.53, 1639.69, -449.228, 1653.39, -520.465, 859.338 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1016.18, 767.692 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1729.34, 519.628 )
+position = Vector2( 1729.34, 515.423 )
+scale = Vector2( 2.4858, 2.4858 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 2993.76, 1189.78 )
+scale = Vector2( 2.4858, 2.4858 )
+texture = ExtResource( 2 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 4980.71, 364.897 )
 scale = Vector2( 2.4858, 2.4858 )
 texture = ExtResource( 2 )
 
