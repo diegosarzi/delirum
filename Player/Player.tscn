@@ -14,10 +14,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 44, 45, 46, 47, 48, 49 ]
+"values": [ 44, 45, 47, 48, 49 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -97,84 +97,84 @@ tracks/0/keys = {
 "values": [ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "attack"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "jump"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "jump_down"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "virada"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "walk_right"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
 switch_mode = 2
-auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=25]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=26]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=28]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=29]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=30]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=31]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=32]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=33]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=34]
-
-[sub_resource type="AnimationNodeStateMachine" id=22]
-states/attack/node = SubResource( 8 )
-states/attack/position = Vector2( 645, 356 )
-states/idle/node = SubResource( 9 )
+[sub_resource type="AnimationNodeStateMachine" id=28]
+states/attack/node = SubResource( 7 )
+states/attack/position = Vector2( 619, 436 )
+states/idle/node = SubResource( 8 )
 states/idle/position = Vector2( 486, 206 )
-states/jump/node = SubResource( 10 )
+states/jump/node = SubResource( 9 )
 states/jump/position = Vector2( 486, 50 )
-states/jump_down/node = SubResource( 11 )
+states/jump_down/node = SubResource( 10 )
 states/jump_down/position = Vector2( 619, 130 )
-states/virada/node = SubResource( 12 )
+states/virada/node = SubResource( 11 )
 states/virada/position = Vector2( 298, 145 )
-states/walk_right/node = SubResource( 13 )
-states/walk_right/position = Vector2( 298, 260 )
-transitions = [ "virada", "walk_right", SubResource( 15 ), "idle", "jump", SubResource( 19 ), "jump", "jump_down", SubResource( 20 ), "jump_down", "idle", SubResource( 21 ), "idle", "attack", SubResource( 24 ), "attack", "idle", SubResource( 25 ), "idle", "virada", SubResource( 26 ), "walk_right", "idle", SubResource( 27 ), "walk_right", "jump", SubResource( 28 ), "attack", "virada", SubResource( 29 ), "walk_right", "attack", SubResource( 30 ), "attack", "jump_down", SubResource( 31 ), "virada", "jump", SubResource( 32 ), "jump", "attack", SubResource( 33 ), "jump_down", "attack", SubResource( 34 ) ]
+states/walk_right/node = SubResource( 12 )
+states/walk_right/position = Vector2( 285, 343 )
+transitions = [ "virada", "walk_right", SubResource( 13 ), "idle", "jump", SubResource( 14 ), "jump", "jump_down", SubResource( 15 ), "jump_down", "idle", SubResource( 16 ), "idle", "attack", SubResource( 17 ), "attack", "idle", SubResource( 18 ), "idle", "virada", SubResource( 19 ), "walk_right", "idle", SubResource( 20 ), "walk_right", "jump", SubResource( 21 ), "attack", "virada", SubResource( 22 ), "walk_right", "attack", SubResource( 23 ), "attack", "jump_down", SubResource( 24 ), "virada", "jump", SubResource( 25 ), "jump", "attack", SubResource( 26 ), "jump_down", "attack", SubResource( 27 ) ]
 start_node = "idle"
 graph_offset = Vector2( -139.483, -51.5277 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=30]
 radius = 56.1536
 height = 323.77
 
@@ -185,6 +185,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 vframes = 5
 hframes = 11
+frame = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
@@ -195,15 +196,14 @@ anims/virada = SubResource( 5 )
 anims/walk_right = SubResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 22 )
+tree_root = SubResource( 28 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 23 )
+parameters/playback = SubResource( 29 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -16.5131, -2.10123 )
-shape = SubResource( 7 )
+shape = SubResource( 30 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( -13.6038, 146.921 )
