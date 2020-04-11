@@ -20,19 +20,27 @@ func _physics_process(_delta):
 		velocity.x = 0
 		state_machine.travel('die')
 
-	if Player.position.x < position.x and die == false:
+	print(Player.position.x - position.x)
+	#print(position.x - Player.position.x)
+	
+
+	if Player.position.x < position.x and die == false and Player.position.x - position.x > -1000:
+		print('aqui')
 		if velocity.x > 1:
 			velocity.x = 0
 			velocity.y = 0
 		velocity.x = -150
 		$Sprite5.set_flip_h(false)
 		
-	elif Player.position.x > position.x and die == false:
+	elif Player.position.x > position.x and die == false and Player.position.x - position.x < 1000:
 		if velocity.x < -1:
 			velocity.x = 0
 			velocity.y = 0
 		velocity.x = 150
 		$Sprite5.set_flip_h(true)
+		
+	else:
+		velocity.x = 0
 
 	velocity.y += GRAVITY
 	velocity = move_and_slide(velocity, FLOOR)
