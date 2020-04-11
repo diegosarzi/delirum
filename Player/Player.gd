@@ -14,11 +14,11 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = SPEED
 		$Sprite.set_flip_h(false)
-		$Area2D/attack.position.x = 134.244
+		$Area2D/attack.position.x = 150
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x = -SPEED
 		$Sprite.set_flip_h(true)
-		$Area2D/attack.position.x = -134.244
+		$Area2D/attack.position.x = -150
 		
 	else:
 		velocity.x = 0
@@ -35,9 +35,10 @@ func _physics_process(delta):
 
 
 func _on_Area2D_body_entered(body):
-	print(body)
-	body.life -= 1
+	if body.position.x > position.x and body.life != 1:
+		body.position.x += 120
+	elif body.position.x < position.x and body.life != 1:
+		body.position.x -= 120
+	
 	body.animationPlayer.play('damage')
-	pass
-	#get_parent().get_node('Bug').life -= 1
-	#get_parent().get_node('Bug').animationPlayer.play('damage')
+	body.life -= 1

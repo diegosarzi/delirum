@@ -30,37 +30,28 @@ build_mode = 1
 polygon = PoolVector2Array( -145.333, 876.218, 305.786, 854.633, 595.021, 912.912, 905.841, 997.092, 1100.1, 981.983, 1341.85, 895.644, 1525.32, 804.989, 1719.58, 746.71, 1909.53, 733.759, 2200.92, 785.562, 2468.57, 815.781, 2615.35, 835.207, 2612.53, 1639.69, -449.228, 1653.39, -520.465, 859.338 )
 
 [node name="Bug" parent="." instance=ExtResource( 4 )]
-position = Vector2( 3974.36, 766.665 )
+position = Vector2( 2815.79, 529.48 )
+scale = Vector2( 1.2, 1.2 )
 
 [node name="Bug2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 4857.59, 535.943 )
+position = Vector2( 5338.26, 455.003 )
+scale = Vector2( 1.2, 1.2 )
 
 [node name="Bug3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 3451.63, 600.833 )
-
-[node name="Bug4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 4287.99, 741.43 )
-
-[node name="Bug5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 664.297, 708.015 )
-
-[node name="Bug7" parent="." instance=ExtResource( 4 )]
-position = Vector2( -212.302, 189.464 )
-
-[node name="Bug6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1759.83, 453.501 )
+position = Vector2( 103.709, 568.949 )
+scale = Vector2( 1.2, 1.2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1016.18, 767.692 )
-scale = Vector2( 0.8, 0.8 )
+position = Vector2( 883.083, 659.947 )
+scale = Vector2( 0.7, 0.7 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1729.34, 515.423 )
+position = Vector2( 2052.58, 528.099 )
 scale = Vector2( 2.4858, 2.4858 )
 texture = ExtResource( 2 )
 
 [node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 2993.76, 1184.62 )
+position = Vector2( 3386.71, 1260.68 )
 scale = Vector2( 2.4858, 2.4858 )
 texture = ExtResource( 2 )
 

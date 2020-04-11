@@ -21,11 +21,11 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=1980
-window/size/height=1240
+window/size/width=1920
+window/size/height=1080
 window/size/always_on_top=true
-window/size/test_width=990
-window/size/test_height=620
+window/size/test_width=960
+window/size/test_height=540
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -39,5 +39,5 @@ attack={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.611765, 0.611765, 0.611765, 1 )
+environment/default_clear_color=Color( 0.117647, 0.117647, 0.117647, 1 )
 environment/default_environment="res://default_env.tres"

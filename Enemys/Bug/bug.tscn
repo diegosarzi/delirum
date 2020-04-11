@@ -1,16 +1,56 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Enemys/Bug/bug.png" type="Texture" id=1]
 [ext_resource path="res://Enemys/Bug/bug.gd" type="Script" id=2]
 [ext_resource path="res://World/blood.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 80.117
-height = 113.472
+radius = 66.0
+height = 147.245
+
+[sub_resource type="Animation" id=2]
+resource_name = "attack"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite5:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 0.9 ), Vector2( 1.5, 0.9 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 28.931 ), Vector2( 0, 30 ), Vector2( 0, 30 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "damage"
-length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite5:frame")
 tracks/0/interp = 1
@@ -35,9 +75,50 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 10 ) ]
+}
 
-[sub_resource type="Animation" id=2]
-resource_name = "walk"
+[sub_resource type="Animation" id=4]
+resource_name = "die"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite5:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.00090642, 0.0625193, 0.120876, 0.178501, 0.2506 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 8, 9 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.274912 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -52,8 +133,73 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 10 ) ]
+}
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "damage"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=16]
+states/attack/node = SubResource( 6 )
+states/attack/position = Vector2( 311, 307 )
+states/damage/node = SubResource( 7 )
+states/damage/position = Vector2( 200, 133 )
+states/die/node = SubResource( 8 )
+states/die/position = Vector2( 522, 278 )
+states/walk/node = SubResource( 9 )
+states/walk/position = Vector2( 582, 142 )
+transitions = [ "walk", "attack", SubResource( 10 ), "walk", "damage", SubResource( 11 ), "attack", "damage", SubResource( 12 ), "damage", "walk", SubResource( 13 ), "damage", "attack", SubResource( 14 ), "damage", "die", SubResource( 15 ) ]
+graph_offset = Vector2( 0, 82.0728 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
+
+[sub_resource type="ParticlesMaterial" id=18]
 emission_shape = 1
 emission_sphere_radius = 35.98
 flag_disable_z = true
@@ -67,22 +213,35 @@ orbit_velocity_random = 0.0
 scale = 4.0
 scale_random = 1.0
 
-[node name="StaticBody2D" type="KinematicBody2D"]
+[sub_resource type="CapsuleShape2D" id=19]
+radius = 15.9081
+height = 62.3795
+
+[node name="bug" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite5" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 3
-frame = 2
+vframes = 2
+hframes = 5
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3.89629, 29.8335 )
+position = Vector2( 0, 30 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "walk"
+anims/attack = SubResource( 2 )
 anims/damage = SubResource( 3 )
-anims/walk = SubResource( 2 )
+anims/die = SubResource( 4 )
+anims/walk = SubResource( 5 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 16 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 17 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( -13.3727, -38.7457 )
@@ -90,5 +249,17 @@ emitting = false
 amount = 24
 one_shot = true
 speed_scale = 5.7
-process_material = SubResource( 4 )
+process_material = SubResource( 18 )
 texture = ExtResource( 3 )
+
+[node name="attack_area" type="Area2D" parent="."]
+
+[node name="attack" type="CollisionShape2D" parent="attack_area"]
+position = Vector2( -145.482, 0 )
+shape = SubResource( 19 )
+
+[node name="attack2" type="CollisionShape2D" parent="attack_area"]
+position = Vector2( 140.383, -0.630234 )
+shape = SubResource( 19 )
+[connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]
