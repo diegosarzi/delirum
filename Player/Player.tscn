@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Player/walk2.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -167,30 +167,32 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
 
-[sub_resource type="AnimationNodeStateMachine" id=28]
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachine" id=29]
 states/attack/node = SubResource( 7 )
-states/attack/position = Vector2( 619, 436 )
+states/attack/position = Vector2( 731, 406 )
 states/idle/node = SubResource( 8 )
-states/idle/position = Vector2( 486, 206 )
+states/idle/position = Vector2( 499, 179 )
 states/jump/node = SubResource( 9 )
-states/jump/position = Vector2( 486, 50 )
+states/jump/position = Vector2( 499, -14 )
 states/jump_down/node = SubResource( 10 )
-states/jump_down/position = Vector2( 619, 130 )
+states/jump_down/position = Vector2( 775, 179 )
 states/virada/node = SubResource( 11 )
-states/virada/position = Vector2( 298, 145 )
+states/virada/position = Vector2( 194, 179 )
 states/walk_right/node = SubResource( 12 )
-states/walk_right/position = Vector2( 285, 343 )
-transitions = [ "virada", "walk_right", SubResource( 13 ), "idle", "jump", SubResource( 14 ), "jump", "jump_down", SubResource( 15 ), "jump_down", "idle", SubResource( 16 ), "idle", "attack", SubResource( 17 ), "attack", "idle", SubResource( 18 ), "idle", "virada", SubResource( 19 ), "walk_right", "idle", SubResource( 20 ), "walk_right", "jump", SubResource( 21 ), "attack", "virada", SubResource( 22 ), "walk_right", "attack", SubResource( 23 ), "attack", "jump_down", SubResource( 24 ), "virada", "jump", SubResource( 25 ), "jump", "attack", SubResource( 26 ), "jump_down", "attack", SubResource( 27 ) ]
+states/walk_right/position = Vector2( 248, 406 )
+transitions = [ "virada", "walk_right", SubResource( 13 ), "idle", "jump", SubResource( 14 ), "jump", "jump_down", SubResource( 15 ), "jump_down", "idle", SubResource( 16 ), "idle", "attack", SubResource( 17 ), "attack", "idle", SubResource( 18 ), "idle", "virada", SubResource( 19 ), "walk_right", "idle", SubResource( 20 ), "walk_right", "jump", SubResource( 21 ), "attack", "virada", SubResource( 22 ), "walk_right", "attack", SubResource( 23 ), "attack", "jump_down", SubResource( 24 ), "virada", "jump", SubResource( 25 ), "jump", "attack", SubResource( 26 ), "jump_down", "attack", SubResource( 27 ), "virada", "attack", SubResource( 28 ) ]
 start_node = "idle"
-graph_offset = Vector2( -139.483, -51.5277 )
+graph_offset = Vector2( -103.24, -66.2128 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=29]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=30]
 
-[sub_resource type="CapsuleShape2D" id=30]
-radius = 110.706
-height = 198.19
+[sub_resource type="CapsuleShape2D" id=31]
+radius = 90.6631
+height = 258.192
 
-[sub_resource type="CircleShape2D" id=31]
+[sub_resource type="CircleShape2D" id=32]
 radius = 23.9853
 
 [node name="Player" type="KinematicBody2D"]
@@ -200,7 +202,6 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 vframes = 5
 hframes = 11
-frame = 45
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
@@ -211,14 +212,14 @@ anims/virada = SubResource( 5 )
 anims/walk_right = SubResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 28 )
+tree_root = SubResource( 29 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 29 )
+parameters/playback = SubResource( 30 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -2.101 )
-shape = SubResource( 30 )
+position = Vector2( 1.16638, -9.09909 )
+shape = SubResource( 31 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( -13.6038, 146.921 )
@@ -240,6 +241,6 @@ smoothing_enabled = true
 
 [node name="attack" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 150, -64.286 )
-shape = SubResource( 31 )
+shape = SubResource( 32 )
 disabled = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
