@@ -221,21 +221,17 @@ script = ExtResource( 3 )
 position = Vector2( 1.16638, -9.09909 )
 shape = SubResource( 31 )
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -13.6038, 146.921 )
-scale = Vector2( 6.72, 1.44 )
-enabled = true
-cast_to = Vector2( -0.339, 50.334 )
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 1, 0 )
 current = true
-limit_left = -470
-limit_top = -100
-limit_right = 5250
-limit_bottom = 2000
+zoom = Vector2( 1.5, 1.5 )
 limit_smoothed = true
 smoothing_enabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 0, 168.007 )
+scale = Vector2( 5, 1 )
+enabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
 

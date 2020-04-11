@@ -1,85 +1,164 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://World/arvere1.png" type="Texture" id=2]
-[ext_resource path="res://World/bg.png" type="Texture" id=3]
+[ext_resource path="res://World/bg/pedra_01_esc.png" type="Texture" id=2]
+[ext_resource path="res://World/bg/grama_01.png" type="Texture" id=3]
 [ext_resource path="res://Enemys/Bug/bug.tscn" type="PackedScene" id=4]
-[ext_resource path="res://NPCS/Vagalume/Vagalume.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Path2D.gd" type="Script" id=6]
+[ext_resource path="res://World/bg/arvore-frente-desfocada-03.png" type="Texture" id=6]
+[ext_resource path="res://World/bg/arvore-fundo-04.png" type="Texture" id=7]
+[ext_resource path="res://World/bg/grama_02.png" type="Texture" id=8]
+[ext_resource path="res://World/bg/arvore-frente-01.png" type="Texture" id=9]
+[ext_resource path="res://World/bg/pedra_02.png" type="Texture" id=10]
+[ext_resource path="res://World/Gui/Keys/frame0001.png" type="Texture" id=11]
+[ext_resource path="res://World/Gui/Keys/frame0002.png" type="Texture" id=12]
+[ext_resource path="res://World/Gui/Keys/move_text.png" type="Texture" id=13]
 
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 73.3183, -692.832, -520.053, 22.2415, 520.053, -22.2415, 1781.92, -372.616, -335.71, 19.6875, 335.71, -19.6875, 2718.42, -601.723, -566.309, 42.2685, 566.309, -42.2685, 4668.03, -345.748, -531.122, 79.6684, 531.122, -79.6684, 5756.83, -651.143, 0, 0, 0, 0, 6541.39, -692.405 )
+[sub_resource type="Animation" id=1]
+resource_name = "start"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(">:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.6, 2.1, 6.9, 7.3 ),
+"transitions": PoolRealArray( 2, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 1e-05 ), Vector2( 0.8, 0.8 ), Vector2( 0.8, 0.8 ), Vector2( 0.8, 1e-05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("<:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.1, 1.6, 6.5, 6.8 ),
+"transitions": PoolRealArray( 2, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 1e-05 ), Vector2( 0.8, 0.8 ), Vector2( 0.8, 0.8 ), Vector2( 0.8, 1e-05 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("move_text:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.4, 2.7, 6.5, 7.1 ),
+"transitions": PoolRealArray( 0.5, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("move_text:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2.7, 4, 5.2, 6.5 ),
+"transitions": PoolRealArray( -2, -2, -2, 1 ),
+"update": 0,
+"values": [ Vector2( 1478.36, 79.9557 ), Vector2( 1478.36, 49.956 ), Vector2( 1478.36, 79.9557 ), Vector2( 1478.36, 49.956 ) ]
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="World" type="Node2D"]
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+[node name="Background" type="StaticBody2D" parent="."]
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
-position = Vector2( 1067.91, 775.937 )
-scale = Vector2( 2.53766, 2.53766 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background"]
+position = Vector2( -116.652, 1404.79 )
+polygon = PoolVector2Array( -893.411, -603.049, -663.951, -633.872, -191.333, -644.146, 72.374, -630.447, 301.834, -668.12, 438.824, -674.969, 568.966, -640.721, 990.212, -555.102, 1154.6, -575.651, 1418.31, -671.544, 1562.15, -777.712, 1753.94, -818.81, 2072.44, -805.11, 2397.79, -774.288, 2534.78, -726.341, 2738.93, -711.642, 2869.33, -532.808, 2969.19, -373.029, 3049.08, -245.205, 3124.98, -169.31, 3228.67, -71.2097, 3153.32, -23.2629, 3050.58, -74.6345, 2817.7, -33.5372, 2653.31, -64.3602, 2560.84, -47.2363, 2526.59, 127.427, 2403.3, 240.444, 2146.44, 124.002, 1872.46, 147.976, 1749.17, 113.728, 1526.56, -33.5372, 1221.75, -40.3868, 995.718, 14.4095, 899.824, 120.577, 899.824, 425.382, 728.586, 511.001, 519.675, 415.108, 214.87, 391.134, 67.6053, 507.576, -62.5359, 425.382, -131.031, 305.515, -312.544, 260.993, -635.031, 416.492, -834.202, 398.788, -896.167, 527.143, -1042.23, 505.012, -1020.1, 336.824, -936.001, 177.487, -909.445, 93.3926, -940.427, -269.541, -940.427, -437.73 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Background"]
+position = Vector2( -116.652, 1404.79 )
+polygon = PoolVector2Array( 3823.08, 400.106, 3903.44, 409.378, 3971.44, 378.47, 4039.44, 390.833, 4141.44, 397.015, 4240.35, 397.015, 4367.07, 415.56, 4506.16, 378.47, 4490.7, 631.92, 4651.43, 696.828, 4765.79, 659.738, 4855.43, 579.375, 5065.6, 616.466, 5133.6, 610.284, 5306.69, 517.558, 5417.96, 400.106, 5448.87, 220.836, 5427.23, 94.1113, 5359.23, -60.4314, 5294.33, -233.519, 5192.33, -298.427, 5099.6, -310.791, 4883.24, -316.972, 4790.52, -298.427, 4561.79, -304.609, 4472.16, -320.063, 4404.16, -344.79, 4283.62, -347.881, 4231.07, -335.517, 4095.08, -242.792, 4027.08, -134.612, 4005.44, 16.8398, 3952.9, 171.383, 3943.62, 245.563, 3900.35, 233.2, 3841.62, 267.199, 3801.44, 341.38, 3770.54, 375.379 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Background"]
+position = Vector2( 189.058, 1882.46 )
+scale = Vector2( 0.876873, 0.752658 )
+polygon = PoolVector2Array( 1281.83, 2669.64, 1412.29, 2655.67, 1570.69, 2543.85, 1771.03, 2506.58, 1980.68, 2399.42, 2092.5, 2455.33, 2297.49, 2399.42, 2465.21, 2618.4, 2525.78, 2725.55, 2800.66, 2814.07, 3038.27, 2511.24, 3247.92, 2539.19, 3378.37, 2744.19, 3560.07, 2487.94, 3667.23, 2203.75, 3643.93, 1742.51, 3662.57, 1518.88, 3574.05, 1402.41, 3424.96, 1239.34, 3299.17, 1132.19, 3089.51, 1080.94, 2940.43, 1118.21, 2782.02, 1141.5, 2623.62, 1160.14, 2432.6, 1178.77, 2260.22, 1150.82, 2143.74, 1132.19, 1924.77, 1164.8, 1822.27, 1206.73, 1663.87, 1239.34, 1500.81, 1309.23, 1458.88, 1388.43, 1398.31, 1518.88, 1379.67, 1728.53, 1412.29, 1970.8, 1458.88, 2171.14, 1407.63, 2352.83, 1323.77, 2441.36, 1281.83, 2557.83, 1244.56, 2683.62 )
+
+[node name="arvore-fundo-04" type="Sprite" parent="Background"]
+position = Vector2( 604.801, 545.28 )
+scale = Vector2( 0.37236, 0.262898 )
+texture = ExtResource( 7 )
+
+[node name="arvore-frente-desfocada-03" type="Sprite" parent="Background"]
+position = Vector2( 1829.37, 138.752 )
+scale = Vector2( 0.527855, 0.527855 )
+texture = ExtResource( 6 )
+
+[node name="pedra_01_esc" type="Sprite" parent="Background"]
+position = Vector2( -116.652, 1355.98 )
+texture = ExtResource( 2 )
+
+[node name="pedra_01_esc2" type="Sprite" parent="Background"]
+position = Vector2( 2344.23, 3452.34 )
+scale = Vector2( 0.928321, 0.977305 )
+texture = ExtResource( 2 )
+
+[node name="pedra_02" type="Sprite" parent="Background"]
+position = Vector2( 2271.54, 1116.39 )
+texture = ExtResource( 10 )
+
+[node name="pedra_03" type="Sprite" parent="Background"]
+position = Vector2( 4496.9, 1609.74 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 10 )
+
+[node name="grama_01" type="Sprite" parent="Background"]
+position = Vector2( 1050.14, 1043.65 )
+rotation = -0.0977384
 texture = ExtResource( 3 )
 
-[node name="Sprite2" type="Sprite" parent="StaticBody2D3"]
-position = Vector2( 4117.77, 779.362 )
-scale = Vector2( 2.53766, 2.53766 )
-texture = ExtResource( 3 )
+[node name="grama_02" type="Sprite" parent="Background"]
+position = Vector2( -221.263, 1107.63 )
+scale = Vector2( 1.51136, 2.58065 )
+texture = ExtResource( 8 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D3"]
-position = Vector2( -1.81641, 28.6631 )
-build_mode = 1
-polygon = PoolVector2Array( -145.333, 876.218, 305.786, 854.633, 595.021, 912.912, 905.841, 997.092, 1100.1, 981.983, 1341.85, 895.644, 1525.32, 804.989, 1719.58, 746.71, 1909.53, 733.759, 2200.92, 785.562, 2407.08, 837.419, 2562.65, 879.467, 2612.53, 1639.69, -449.228, 1653.39, -445.803, 882.816 )
+[node name="grama_03" type="Sprite" parent="Background"]
+position = Vector2( 2371.04, 2828.65 )
+scale = Vector2( 1.94913, 2.58772 )
+texture = ExtResource( 8 )
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D3"]
-position = Vector2( 3042.62, 33.2007 )
-build_mode = 1
-polygon = PoolVector2Array( -145.333, 876.218, 305.786, 854.633, 595.021, 912.912, 905.841, 997.092, 1100.1, 981.983, 1341.85, 895.644, 1525.32, 804.989, 1719.58, 746.71, 1909.53, 733.759, 2200.92, 785.562, 2468.57, 815.781, 2615.35, 835.207, 2612.53, 1639.69, -449.228, 1653.39, -520.465, 859.338 )
+[node name="grama_04" type="Sprite" parent="Background"]
+position = Vector2( 4619.52, 1286.69 )
+scale = Vector2( -1.73046, 2.39967 )
+texture = ExtResource( 8 )
 
-[node name="Bug" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2741.03, 457.218 )
-scale = Vector2( 1.2, 1.2 )
+[node name="bug" parent="." instance=ExtResource( 4 )]
+position = Vector2( -763.751, -333.621 )
+scale = Vector2( 1.5, 1.5 )
 
-[node name="Bug2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 4862.73, 405.595 )
-scale = Vector2( 1.2, 1.2 )
+[node name="GUI KEys" type="Node2D" parent="."]
 
-[node name="Bug3" parent="." instance=ExtResource( 4 )]
-position = Vector2( -165.341, 529.49 )
-scale = Vector2( 1.2, 1.2 )
+[node name="<" type="Sprite" parent="GUI KEys"]
+position = Vector2( 1380.95, 248.427 )
+scale = Vector2( 0.8, 1e-05 )
+texture = ExtResource( 12 )
+
+[node name=">" type="Sprite" parent="GUI KEys"]
+position = Vector2( 1590.16, 248.427 )
+scale = Vector2( 0.8, 1e-05 )
+texture = ExtResource( 11 )
+
+[node name="move_text" type="Sprite" parent="GUI KEys"]
+position = Vector2( 1478.36, 79.9557 )
+scale = Vector2( 1e-05, 1 )
+texture = ExtResource( 13 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI KEys"]
+autoplay = "start"
+anims/start = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 883.083, 659.947 )
-scale = Vector2( 0.7, 0.7 )
+position = Vector2( 927.013, 389.606 )
 
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2( -734.675, 1097.51 )
-curve = SubResource( 1 )
-script = ExtResource( 6 )
-
-[node name="follow" type="PathFollow2D" parent="Path2D"]
-position = Vector2( 73.3183, -692.832 )
-scale = Vector2( 0.5, 0.5 )
-
-[node name="Vagalume" parent="Path2D/follow" instance=ExtResource( 5 )]
-position = Vector2( 19.436, 12.8313 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2052.58, 528.099 )
-scale = Vector2( 2.4858, 2.4858 )
-texture = ExtResource( 2 )
-
-[node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 3386.71, 1260.68 )
-scale = Vector2( 2.4858, 2.4858 )
-texture = ExtResource( 2 )
-
-[node name="Sprite4" type="Sprite" parent="."]
-position = Vector2( 4980.71, 364.897 )
-scale = Vector2( 2.4858, 2.4858 )
-texture = ExtResource( 2 )
-
-[node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 262.02, 623.555 )
-scale = Vector2( -2.486, 2.486 )
-texture = ExtResource( 2 )
+[node name="arvore-frente-01" type="Sprite" parent="."]
+position = Vector2( 224.551, 321.27 )
+scale = Vector2( 0.566642, 0.566642 )
+texture = ExtResource( 9 )
