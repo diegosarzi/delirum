@@ -1,16 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/arvere1.png" type="Texture" id=2]
 [ext_resource path="res://World/bg.png" type="Texture" id=3]
 [ext_resource path="res://Enemys/Bug/bug.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NPCS/Vagalume/Vagalume.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Path2D.gd" type="Script" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 73.3183, -692.832, -520.053, 22.2415, 520.053, -22.2415, 1781.92, -372.616, -335.71, 19.6875, 335.71, -19.6875, 2718.42, -601.723, -566.309, 42.2685, 566.309, -42.2685, 4668.03, -345.748, -531.122, 79.6684, 531.122, -79.6684, 5756.83, -651.143, 0, 0, 0, 0, 6541.39, -692.405 )
+}
 
 [node name="Node2D" type="Node2D"]
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D3"]
-position = Vector2( 1067.91, 779.362 )
+position = Vector2( 1067.91, 775.937 )
 scale = Vector2( 2.53766, 2.53766 )
 texture = ExtResource( 3 )
 
@@ -44,6 +51,18 @@ scale = Vector2( 1.2, 1.2 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 883.083, 659.947 )
 scale = Vector2( 0.7, 0.7 )
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2( -734.675, 1097.51 )
+curve = SubResource( 1 )
+script = ExtResource( 6 )
+
+[node name="follow" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 73.3183, -692.832 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Vagalume" parent="Path2D/follow" instance=ExtResource( 5 )]
+position = Vector2( 19.436, 12.8313 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 2052.58, 528.099 )
