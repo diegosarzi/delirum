@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/bg/pedra_01_esc.png" type="Texture" id=2]
 [ext_resource path="res://World/bg/grama_01.png" type="Texture" id=3]
-[ext_resource path="res://Enemys/Bug/bug.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NPCS/Vagalume/Vagalume.gd" type="Script" id=4]
+[ext_resource path="res://NPCS/Vagalume/Vagalume.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/bg/arvore-frente-desfocada-03.png" type="Texture" id=6]
 [ext_resource path="res://World/bg/arvore-fundo-04.png" type="Texture" id=7]
 [ext_resource path="res://World/bg/grama_02.png" type="Texture" id=8]
@@ -83,6 +84,7 @@ scale = Vector2( 0.876873, 0.752658 )
 polygon = PoolVector2Array( 1281.83, 2669.64, 1412.29, 2655.67, 1570.69, 2543.85, 1771.03, 2506.58, 1980.68, 2399.42, 2092.5, 2455.33, 2297.49, 2399.42, 2465.21, 2618.4, 2525.78, 2725.55, 2800.66, 2814.07, 3038.27, 2511.24, 3247.92, 2539.19, 3378.37, 2744.19, 3560.07, 2487.94, 3667.23, 2203.75, 3643.93, 1742.51, 3662.57, 1518.88, 3574.05, 1402.41, 3424.96, 1239.34, 3299.17, 1132.19, 3089.51, 1080.94, 2940.43, 1118.21, 2782.02, 1141.5, 2623.62, 1160.14, 2432.6, 1178.77, 2260.22, 1150.82, 2143.74, 1132.19, 1924.77, 1164.8, 1822.27, 1206.73, 1663.87, 1239.34, 1500.81, 1309.23, 1458.88, 1388.43, 1398.31, 1518.88, 1379.67, 1728.53, 1412.29, 1970.8, 1458.88, 2171.14, 1407.63, 2352.83, 1323.77, 2441.36, 1281.83, 2557.83, 1244.56, 2683.62 )
 
 [node name="arvore-fundo-04" type="Sprite" parent="Background"]
+light_mask = 2
 position = Vector2( 604.801, 545.28 )
 scale = Vector2( 0.37236, 0.262898 )
 texture = ExtResource( 7 )
@@ -130,10 +132,6 @@ position = Vector2( 4619.52, 1286.69 )
 scale = Vector2( -1.73046, 2.39967 )
 texture = ExtResource( 8 )
 
-[node name="bug" parent="." instance=ExtResource( 4 )]
-position = Vector2( -763.751, -333.621 )
-scale = Vector2( 1.5, 1.5 )
-
 [node name="GUI KEys" type="Node2D" parent="."]
 
 [node name="<" type="Sprite" parent="GUI KEys"]
@@ -154,6 +152,11 @@ texture = ExtResource( 13 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI KEys"]
 autoplay = "start"
 anims/start = SubResource( 1 )
+
+[node name="Vagalume" parent="." instance=ExtResource( 5 )]
+position = Vector2( 516.229, 252.952 )
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 927.013, 389.606 )

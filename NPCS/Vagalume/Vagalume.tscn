@@ -20,6 +20,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 100 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 100 ) ]
+}
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -29,21 +41,25 @@ animations = [ {
 "speed": 32.0
 } ]
 
-[node name="Vagalume" type="Node2D"]
+[node name="Vagalume" type="KinematicBody2D"]
 
 [node name="Light2D" type="Light2D" parent="."]
 scale = Vector2( 5, 5 )
 texture = ExtResource( 3 )
+texture_scale = 1.5
 color = Color( 0.227451, 0.996078, 0.0313726, 1 )
-energy = 0.86
+range_height = 676.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "moviment"
 anims/moviment = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+light_mask = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sprite"]
+modulate = Color( 0.698039, 0.85098, 0.643137, 1 )
+light_mask = 2
 frames = SubResource( 1 )
 frame = 1
 playing = true
