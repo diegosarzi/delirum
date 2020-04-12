@@ -14,7 +14,6 @@ onready var base = $RayCast2D
 onready var animationPlayer = $AnimationPlayer
 
 func _physics_process(_delta):
-	print(life)
 	if life <= 0:
 		queue_free()
 	

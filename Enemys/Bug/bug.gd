@@ -6,6 +6,7 @@ const FLOOR = Vector2(0, -1)
 onready var bar = $HealthBar
 onready var life = 3
 var velocity = Vector2.ZERO
+var speed = 220
 var die = false
 
 onready var state_machine = $AnimationTree.get("parameters/playback")
@@ -29,14 +30,14 @@ func _physics_process(_delta):
 		if velocity.x > 1:
 			velocity.x = 0
 			velocity.y = 0
-		velocity.x = -180
+		velocity.x = -speed
 		$Sprite5.set_flip_h(false)
 		
 	elif Player.position.x > position.x and die == false and Player.position.x - position.x < 1800:
 		if velocity.x < -1:
 			velocity.x = 0
 			velocity.y = 0
-		velocity.x = 180
+		velocity.x = speed
 		$Sprite5.set_flip_h(true)
 		
 	else:

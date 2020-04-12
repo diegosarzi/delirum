@@ -7,7 +7,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 66.0
-height = 110.318
+height = 142.346
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
@@ -252,6 +252,7 @@ radius = 4.80234
 height = 48.9504
 
 [node name="bug" type="KinematicBody2D"]
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 2 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 4 )]
@@ -265,7 +266,6 @@ rect_scale = Vector2( 0.357477, 0.357477 )
 texture = ExtResource( 1 )
 vframes = 2
 hframes = 5
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 10 )
@@ -289,11 +289,11 @@ texture = ExtResource( 3 )
 [node name="attack_area" type="Area2D" parent="."]
 
 [node name="attack" type="CollisionShape2D" parent="attack_area"]
-position = Vector2( -145.482, 0 )
+position = Vector2( -130, 0 )
 shape = SubResource( 7 )
 
 [node name="attack2" type="CollisionShape2D" parent="attack_area"]
-position = Vector2( 140.383, -0.630234 )
+position = Vector2( 130, -0.63 )
 shape = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -306,12 +306,12 @@ parameters/playback = SubResource( 20 )
 position = Vector2( -109.111, 3.38092 )
 
 [node name="attack" type="CollisionShape2D" parent="damage_area"]
-position = Vector2( 13.7979, 0 )
+position = Vector2( 4.69714, 0 )
 shape = SubResource( 21 )
 disabled = true
 
 [node name="attack2" type="CollisionShape2D" parent="damage_area"]
-position = Vector2( 208.045, 0 )
+position = Vector2( 214.112, 0 )
 shape = SubResource( 21 )
 disabled = true
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]

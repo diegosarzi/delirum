@@ -191,7 +191,7 @@ graph_offset = Vector2( -103.24, -66.2128 )
 
 [sub_resource type="CapsuleShape2D" id=31]
 radius = 90.6631
-height = 258.192
+height = 223.959
 
 [sub_resource type="CircleShape2D" id=32]
 radius = 23.9853
@@ -227,7 +227,7 @@ parameters/playback = SubResource( 30 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1.16638, -9.09909 )
+position = Vector2( 0.0583478, -21.2875 )
 shape = SubResource( 31 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

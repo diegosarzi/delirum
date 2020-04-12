@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pedra_01_esc.png-e069576d1d6d4b8a26f42f36df688cfd.stex"
+path="res://.import/pedra_02_esc_desfocada.png-4bbf838d5cbfa462c446e254871818f0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/bg/pedra_01_esc.png"
-dest_files=[ "res://.import/pedra_01_esc.png-e069576d1d6d4b8a26f42f36df688cfd.stex" ]
+source_file="res://World/bg/pedra_02_esc_desfocada.png"
+dest_files=[ "res://.import/pedra_02_esc_desfocada.png-4bbf838d5cbfa462c446e254871818f0.stex" ]
 
 [params]
 
