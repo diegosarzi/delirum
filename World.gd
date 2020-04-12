@@ -5,7 +5,7 @@ var direction
 func _physics_process(delta):
 	#######################################################################
 	##### ANIMATE FOLLOW VAGALUME
-	if $Vagalume.position.x < $Player.position.x:
+	if $Vagalume.position.x < $Player.position.x: 
 		$Vagalume.get_node("Sprite/AnimatedSprite").set_flip_h(false)
 		direction = -200
 	else:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Enemys/Bug/bug.png" type="Texture" id=1]
 [ext_resource path="res://Enemys/Bug/bug.gd" type="Script" id=2]
 [ext_resource path="res://World/blood.png" type="Texture" id=3]
+[ext_resource path="res://Player/Bars/HealthBar.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 66.0
@@ -47,6 +48,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 28.931 ), Vector2( 0, 30 ), Vector2( 0, 30 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("damage_area/attack:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("damage_area/attack2:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -159,7 +184,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 10 ) ]
 }
 
-[sub_resource type="ParticlesMaterial" id=18]
+[sub_resource type="ParticlesMaterial" id=6]
 emission_shape = 1
 emission_sphere_radius = 35.98
 flag_disable_z = true
@@ -173,57 +198,68 @@ orbit_velocity_random = 0.0
 scale = 4.0
 scale_random = 1.0
 
-[sub_resource type="CapsuleShape2D" id=19]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 15.9081
 height = 62.3795
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "attack"
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "damage"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "die"
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=31]
-states/attack/node = SubResource( 20 )
+[sub_resource type="AnimationNodeStateMachine" id=19]
+states/attack/node = SubResource( 8 )
 states/attack/position = Vector2( 651, -49 )
-states/damage/node = SubResource( 21 )
+states/damage/node = SubResource( 9 )
 states/damage/position = Vector2( 396, 155 )
-states/die/node = SubResource( 22 )
+states/die/node = SubResource( 10 )
 states/die/position = Vector2( 651, 253 )
-states/walk/node = SubResource( 23 )
+states/walk/node = SubResource( 11 )
 states/walk/position = Vector2( 651, 155 )
-transitions = [ "walk", "attack", SubResource( 24 ), "walk", "damage", SubResource( 25 ), "attack", "walk", SubResource( 26 ), "attack", "damage", SubResource( 27 ), "damage", "die", SubResource( 28 ), "damage", "attack", SubResource( 29 ), "damage", "walk", SubResource( 30 ) ]
+transitions = [ "walk", "attack", SubResource( 12 ), "walk", "damage", SubResource( 13 ), "attack", "walk", SubResource( 14 ), "attack", "damage", SubResource( 15 ), "damage", "die", SubResource( 16 ), "damage", "attack", SubResource( 17 ), "damage", "walk", SubResource( 18 ) ]
 start_node = "walk"
 graph_offset = Vector2( 0, -124.671 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
+
+[sub_resource type="CapsuleShape2D" id=21]
+radius = 4.80234
+height = 48.9504
 
 [node name="bug" type="KinematicBody2D"]
 script = ExtResource( 2 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 4 )]
+margin_left = -85.5827
+margin_top = -204.996
+margin_right = -85.5827
+margin_bottom = -204.996
+rect_scale = Vector2( 0.357477, 0.357477 )
 
 [node name="Sprite5" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -247,23 +283,37 @@ emitting = false
 amount = 24
 one_shot = true
 speed_scale = 5.7
-process_material = SubResource( 18 )
+process_material = SubResource( 6 )
 texture = ExtResource( 3 )
 
 [node name="attack_area" type="Area2D" parent="."]
 
 [node name="attack" type="CollisionShape2D" parent="attack_area"]
 position = Vector2( -145.482, 0 )
-shape = SubResource( 19 )
+shape = SubResource( 7 )
 
 [node name="attack2" type="CollisionShape2D" parent="attack_area"]
 position = Vector2( 140.383, -0.630234 )
-shape = SubResource( 19 )
+shape = SubResource( 7 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 31 )
+tree_root = SubResource( 19 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 32 )
+parameters/playback = SubResource( 20 )
+
+[node name="damage_area" type="Area2D" parent="."]
+position = Vector2( -109.111, 3.38092 )
+
+[node name="attack" type="CollisionShape2D" parent="damage_area"]
+position = Vector2( 13.7979, 0 )
+shape = SubResource( 21 )
+disabled = true
+
+[node name="attack2" type="CollisionShape2D" parent="damage_area"]
+position = Vector2( 208.045, 0 )
+shape = SubResource( 21 )
+disabled = true
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]
+[connection signal="body_entered" from="damage_area" to="." method="_on_damage_area_body_entered"]
