@@ -4,7 +4,7 @@
 [ext_resource path="res://NPCS/Vagalume/frame0000.png" type="Texture" id=2]
 [ext_resource path="res://NPCS/Vagalume/light.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "moviment"
 length = 3.0
 loop = true
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( -2, -2 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 100 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 200 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Light2D:position")
@@ -30,10 +30,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 100 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 200 ) ]
 }
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
 "loop": true,
@@ -41,7 +41,7 @@ animations = [ {
 "speed": 32.0
 } ]
 
-[node name="Vagalume" type="KinematicBody2D"]
+[node name="Vagalume" type="Area2D"]
 
 [node name="Light2D" type="Light2D" parent="."]
 scale = Vector2( 5, 5 )
@@ -52,7 +52,7 @@ range_height = 676.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "moviment"
-anims/moviment = SubResource( 2 )
+anims/moviment = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 light_mask = 2
@@ -60,6 +60,5 @@ light_mask = 2
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Sprite"]
 modulate = Color( 0.698039, 0.85098, 0.643137, 1 )
 light_mask = 2
-frames = SubResource( 1 )
-frame = 1
+frames = SubResource( 2 )
 playing = true
