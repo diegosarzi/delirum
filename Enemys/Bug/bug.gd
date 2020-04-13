@@ -47,13 +47,13 @@ func _physics_process(_delta):
 	velocity.y += GRAVITY
 	velocity = move_and_slide(velocity, FLOOR)
 
-func _on_attack_area_body_entered(body):
+func _on_attack_area_body_entered(_body):
 	state_machine.travel('attack')
 	
-func _on_attack_area_body_exited(body):
+func _on_attack_area_body_exited(_body):
 	state_machine.travel("walk")
 
 func _on_damage_area_body_entered(body):
 	if body == get_parent().get_node("Player"):
 		body.life -= 10
-		body.get_node("HealthBar")._on_health_updated(body.life,1)
+		get_parent().get_node("CanvasLayer/HealthBar")._on_health_updated(body.life,1)

@@ -268,11 +268,11 @@ scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 2 )
 
 [node name="HealthBar" parent="." instance=ExtResource( 4 )]
-margin_left = -85.5827
-margin_top = -204.996
-margin_right = -85.5827
-margin_bottom = -204.996
-rect_scale = Vector2( 0.357477, 0.357477 )
+margin_left = -122.074
+margin_top = -195.873
+margin_right = -122.074
+margin_bottom = -195.873
+rect_scale = Vector2( 0.482941, 0.482941 )
 
 [node name="Sprite5" type="Sprite" parent="."]
 texture = ExtResource( 1 )

@@ -10,12 +10,11 @@ var velocity = Vector2.ZERO
 
 var life = 100
 
-onready var base = $RayCast2D
 onready var animationPlayer = $AnimationPlayer
 
 func _physics_process(_delta):
 	if life <= 0:
-		queue_free()
+		return get_tree().reload_current_scene()
 	
 	# correr!
 	if Input.is_action_pressed("run"):
@@ -37,7 +36,6 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("attack"):
 		velocity.x = 0
 		
-	print(is_on_floor())
 	if Input.is_action_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_POWER
 		
