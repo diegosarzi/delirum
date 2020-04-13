@@ -9,18 +9,24 @@ const FLOOR = Vector2(0, -1)
 var velocity = Vector2.ZERO
 
 var life = 100
+var max_boost = 1200
+var bost_time = 0
+
 
 onready var animationPlayer = $AnimationPlayer
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if life <= 0:
 		return get_tree().reload_current_scene()
-	
+		
 	# correr!
 	if Input.is_action_pressed("run"):
-		SPEED = 1200
+		if(SPEED < max_boost):
+			SPEED += SPEED * delta
 	else:
-		SPEED = 600
+		if(SPEED > 600):
+			SPEED -= SPEED * delta
+			velocity.x = SPEED
 	
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = SPEED
@@ -33,8 +39,6 @@ func _physics_process(_delta):
 	else:
 		velocity.x = 0
 		
-	if Input.is_action_just_pressed("attack"):
-		velocity.x = 0
 		
 	if Input.is_action_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_POWER
