@@ -73,6 +73,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true, false, true ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("damage_area/attack3:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "damage"
@@ -299,7 +311,6 @@ shape = SubResource( 7 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 19 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 20 )
 
 [node name="damage_area" type="Area2D" parent="."]
@@ -308,12 +319,15 @@ position = Vector2( -109.111, 3.38092 )
 [node name="attack" type="CollisionShape2D" parent="damage_area"]
 position = Vector2( 4.69714, 0 )
 shape = SubResource( 21 )
-disabled = true
+
+[node name="attack3" type="CollisionShape2D" parent="damage_area"]
+position = Vector2( 107.379, -106.483 )
+rotation = 1.57079
+shape = SubResource( 21 )
 
 [node name="attack2" type="CollisionShape2D" parent="damage_area"]
 position = Vector2( 214.112, 0 )
 shape = SubResource( 21 )
-disabled = true
 [connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]
 [connection signal="body_entered" from="damage_area" to="." method="_on_damage_area_body_entered"]

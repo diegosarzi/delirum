@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const SPEED = 500
+var SPEED = 500
 const GRAVITY = 50
 const JUMP_POWER = -2000
 
@@ -17,6 +17,12 @@ func _physics_process(_delta):
 	if life <= 0:
 		queue_free()
 	
+	# correr!
+	if Input.is_action_pressed("run"):
+		SPEED = 1200
+	else:
+		SPEED = 600
+	
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = SPEED
 		$Sprite.set_flip_h(false)
@@ -31,6 +37,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("attack"):
 		velocity.x = 0
 		
+	print(is_on_floor())
 	if Input.is_action_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_POWER
 		

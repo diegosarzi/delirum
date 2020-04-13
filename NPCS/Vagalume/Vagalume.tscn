@@ -4,7 +4,7 @@
 [ext_resource path="res://NPCS/Vagalume/frame0000.png" type="Texture" id=2]
 [ext_resource path="res://NPCS/Vagalume/light.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
 resource_name = "moviment"
 length = 3.0
 loop = true
@@ -48,11 +48,12 @@ scale = Vector2( 5, 5 )
 texture = ExtResource( 3 )
 texture_scale = 1.5
 color = Color( 0.227451, 0.996078, 0.0313726, 1 )
-range_height = 676.0
+energy = 0.6
+range_height = 541.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "moviment"
-anims/moviment = SubResource( 1 )
+anims/moviment = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 light_mask = 2

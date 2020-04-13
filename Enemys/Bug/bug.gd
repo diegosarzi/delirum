@@ -16,6 +16,7 @@ onready var animationPlayer = $AnimationPlayer
 func _ready():
 	bar._on_max_health_updated(3)
 	bar.get_node("HealthBar").tint_progress = '#dc1d1d'
+	$AnimationTree.set_active(true)
 
 func _physics_process(_delta):
 	

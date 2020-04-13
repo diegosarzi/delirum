@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Player/Bars/life_bar_contorn.png" type="Texture" id=1]
+
+[node name="GUI" type="MarginContainer"]
+anchor_left = 0.063
+anchor_top = 0.078
+anchor_right = 0.531
+anchor_bottom = 0.094
+margin_left = 0.0400009
+margin_top = -0.240005
+margin_right = 866.48
+margin_bottom = 870.48
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 1765.0
+margin_bottom = 888.0
+texture = ExtResource( 1 )
