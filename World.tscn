@@ -963,6 +963,6 @@ position = Vector2( 14467, 2626.6 )
 position = Vector2( 11953.6, 2560.07 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 8726.31, 444.2 )
+position = Vector2( 763.199, 577.726 )
 [connection signal="body_entered" from="GUI_UP_KEY/gui_up_area" to="." method="_on_gui_up_area_body_entered"]
 [connection signal="body_entered" from="GUI_PUNCH/gui_punch_area" to="." method="_on_gui_punch_area_body_entered"]
