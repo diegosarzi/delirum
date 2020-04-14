@@ -14,9 +14,16 @@ var bost_time = 0
 
 var weapon = null
 
+var damage
+
 onready var animationPlayer = $AnimationPlayer
 
 func _physics_process(delta):
+
+	if $AnimationTree.weapon == "sword":
+		damage = 3
+	else:
+		damage = 1
 	
 	if life <= 0:
 		return get_tree().reload_current_scene()
@@ -41,7 +48,11 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 		
-		
+	if is_on_floor():
+		$AnimationTree.is_floor = true
+	else:
+		$AnimationTree.is_floor = false
+	
 	if Input.is_action_pressed("ui_up") and is_on_floor():
 		velocity.y = JUMP_POWER
 		
@@ -55,5 +66,6 @@ func _on_Area2D_body_entered(body):
 		body.position.x -= 120
 		
 	body.state_machine.travel('damage')
-	body.life -= 1
+	print(damage)
+	body.life -= damage
 	body.get_node("HealthBar")._on_health_updated(body.life,1)
