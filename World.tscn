@@ -182,7 +182,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=5]
 resource_name = "start"
 length = 7.0
 tracks/0/type = "value"
@@ -283,7 +283,7 @@ tracks/1/keys = {
 "values": [ false, true, false ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 19334.5, 77.0679 )
 
 [node name="World" type="Node2D"]
@@ -1080,7 +1080,7 @@ scale = Vector2( 1e-05, 1 )
 texture = ExtResource( 17 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI_RUN"]
-anims/start = SubResource( 9 )
+anims/start = SubResource( 5 )
 
 [node name="gui_run_area" type="Area2D" parent="GUI_RUN"]
 
@@ -1135,7 +1135,6 @@ position = Vector2( 714.896, 470.363 )
 
 [node name="bug" parent="." instance=ExtResource( 14 )]
 position = Vector2( 6808.34, 535.263 )
-scale = Vector2( 1.5, 1.5 )
 
 [node name="bug2" parent="." instance=ExtResource( 14 )]
 position = Vector2( 16722, 2531.48 )
@@ -1197,7 +1196,7 @@ position = Vector2( 26067.6, 2531.48 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="base_die"]
 position = Vector2( 14602.8, 4993.87 )
-shape = SubResource( 5 )
+shape = SubResource( 9 )
 [connection signal="body_entered" from="GUI_UP_KEY/gui_up_area" to="." method="_on_gui_up_area_body_entered"]
 [connection signal="body_entered" from="GUI_PUNCH/gui_punch_area" to="." method="_on_gui_punch_area_body_entered"]
 [connection signal="body_entered" from="GUI_RUN/gui_run_area" to="." method="_on_gui_run_area_body_entered"]

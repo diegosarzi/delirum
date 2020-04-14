@@ -12,10 +12,12 @@ var life = 100
 var max_boost = 1200
 var bost_time = 0
 
+var weapon = null
 
 onready var animationPlayer = $AnimationPlayer
 
 func _physics_process(delta):
+	
 	if life <= 0:
 		return get_tree().reload_current_scene()
 		
