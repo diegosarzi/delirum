@@ -13,6 +13,7 @@ var max_boost = 1200
 var bost_time = 0
 
 var weapon = null
+var dist_attack = 150
 
 var damage
 
@@ -22,8 +23,10 @@ func _physics_process(delta):
 
 	if $AnimationTree.weapon == "sword":
 		damage = 3
+		dist_attack = 190
 	else:
 		damage = 1
+		dist_attack = 150
 	
 	if life <= 0:
 		return get_tree().reload_current_scene()
@@ -40,11 +43,11 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = SPEED
 		$Sprite.set_flip_h(false)
-		$Area2D/attack.position.x = 150
+		$Area2D/attack.position.x = dist_attack
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x = -SPEED
 		$Sprite.set_flip_h(true)
-		$Area2D/attack.position.x = -150
+		$Area2D/attack.position.x = -dist_attack
 	else:
 		velocity.x = 0
 		

@@ -25,9 +25,9 @@ func _process(_delta):
 		playback.travel("walk_right" + weapon_anim)
 		if Input.is_action_just_pressed("ui_up"):
 			print(get_node("Playerds"))
-			playback.travel("jump")
+			playback.travel("jump" + weapon_anim)
 	elif Input.is_action_just_pressed("ui_up"):
-		playback.travel("jump")
+		playback.travel("jump" + weapon_anim)
 	elif Input.is_action_pressed("run") and (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")):
 		playback.travel("run" + weapon_anim)
 	else:
