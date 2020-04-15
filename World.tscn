@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Gui/Keys/frame0000.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://World/Gui/Keys/run_text.png" type="Texture" id=17]
 [ext_resource path="res://World/Gui/Keys/run.png" type="Texture" id=18]
 [ext_resource path="res://World/Broke_For_Free_-_01_-_Night_Owl.wav" type="AudioStream" id=19]
+[ext_resource path="res://World/bg/bg_scene1.png" type="Texture" id=20]
 
 [sub_resource type="Animation" id=1]
 resource_name = "start"
@@ -289,6 +290,12 @@ extents = Vector2( 19334.5, 77.0679 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 956.313, 554.171 )
+texture = ExtResource( 20 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -879,9 +886,15 @@ scale = Vector2( 1.04252, 1.74732 )
 texture = ExtResource( 8 )
 
 [node name="grama_13" type="Sprite" parent="Colliders"]
-position = Vector2( 12075.1, 995.28 )
+position = Vector2( 12075.1, 991.675 )
 rotation = 0.0655134
 scale = Vector2( 1.04252, 1.74732 )
+texture = ExtResource( 8 )
+
+[node name="grama_48" type="Sprite" parent="Colliders"]
+position = Vector2( 12957.8, 1352.4 )
+rotation = 0.456448
+scale = Vector2( 1.34856, 2.26025 )
 texture = ExtResource( 8 )
 
 [node name="grama_15" type="Sprite" parent="Colliders"]
@@ -963,13 +976,13 @@ scale = Vector2( 1.152, -1.632 )
 texture = ExtResource( 8 )
 
 [node name="arvore-fundo-03" type="Sprite" parent="Colliders"]
-position = Vector2( 396.345, 261.545 )
-scale = Vector2( 0.627304, 0.627304 )
+position = Vector2( 370.498, 197.876 )
+scale = Vector2( 0.743182, 0.743182 )
 texture = ExtResource( 15 )
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Colliders"]
-position = Vector2( 3324.3, -3 )
-polygon = PoolVector2Array( 10224.8, 1806.66, 10165, 1955.18, 10170, 2154.24, 10140.7, 2327.05, 10154.4, 2460.61, 10136.6, 2512.38, 10144.2, 2611.05, 10129, 2736.28, 10185.9, 2842.53, 10094.9, 2937.4, 10284.6, 2907.04, 10793.1, 2918.42, 11240.9, 2952.58, 11961.9, 2918.42, 12690.5, 2929.81, 14001.7, 2923.04, 14531.6, 2929.06, 15928.4, 2911, 16741.3, 2868.85, 17722.7, 2935.08, 18144.2, 2892.93, 18469.3, 2917.02, 23251.3, 2897.78, 23193.2, 2475.32, 23221.4, 1695.46, 23020, 1478.16, 23346, 948.152, 23987.3, 1186.65, 24202, 2453.3, 24387.2, 3305.21, 19302.7, 3355.45, 18166.8, 3293.72, 9610.71, 3306.07, 8845.23, 3306.07, 8635.34, 3009.75, 8808.19, 2552.93, 8820.54, 2268.97, 9187.61, 1094.2, 9381.46, 1096.72, 9590.41, 1202.45, 10077.8, 1405.79, 10223.4, 1561.63, 10221.3, 1725.68 )
+position = Vector2( 3330.48, 0.0908203 )
+polygon = PoolVector2Array( 10224.8, 1806.66, 10165, 1955.18, 10170, 2154.24, 10140.7, 2327.05, 10154.4, 2460.61, 10136.6, 2512.38, 10144.2, 2611.05, 10129, 2736.28, 10185.9, 2842.53, 10094.9, 2937.4, 10284.6, 2907.04, 10793.1, 2918.42, 11240.9, 2952.58, 11961.9, 2918.42, 12690.5, 2929.81, 14001.7, 2923.04, 14531.6, 2929.06, 15928.4, 2911, 16741.3, 2868.85, 17722.7, 2935.08, 18144.2, 2892.93, 18469.3, 2917.02, 23251.3, 2897.78, 23193.2, 2475.32, 23221.4, 1695.46, 23020, 1478.16, 23346, 948.152, 23987.3, 1186.65, 24202, 2453.3, 24387.2, 3305.21, 19302.7, 3355.45, 18166.8, 3293.72, 9610.71, 3306.07, 8845.23, 3306.07, 8611.49, 3195.72, 8637.52, 2798.79, 8602.31, 2259.7, 8444.68, 1749.71, 9257.57, 1063.54, 9590.41, 1202.45, 10077.8, 1405.79, 10223.4, 1561.63, 10221.3, 1725.68 )
 
 [node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Colliders"]
 position = Vector2( 3305.78, 189.115 )
@@ -1086,7 +1099,7 @@ anims/start = SubResource( 5 )
 [node name="gui_run_area" type="Area2D" parent="GUI_RUN"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GUI_RUN/gui_run_area"]
-position = Vector2( 1156.09, 408.457 )
+position = Vector2( 930.055, 405.668 )
 shape = SubResource( 3 )
 
 [node name="Vagalume" parent="." instance=ExtResource( 5 )]
@@ -1204,6 +1217,10 @@ stream = ExtResource( 19 )
 autoplay = true
 max_distance = 50000.0
 attenuation = 0.00552427
+
+[node name="neblinasFull" type="Node" parent="."]
+
+[node name="neblinasFull2" type="Node" parent="."]
 [connection signal="body_entered" from="GUI_UP_KEY/gui_up_area" to="." method="_on_gui_up_area_body_entered"]
 [connection signal="body_entered" from="GUI_PUNCH/gui_punch_area" to="." method="_on_gui_punch_area_body_entered"]
 [connection signal="body_entered" from="GUI_RUN/gui_run_area" to="." method="_on_gui_run_area_body_entered"]

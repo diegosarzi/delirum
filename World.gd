@@ -5,7 +5,45 @@ onready var anim_player = $Vagalume/AnimationPlayer2
 var zoom = false
 var value = null
 
+var neblinas = [
+	preload("res://World/bg/neblinas/neblina.tscn"),
+	preload("res://World/bg/neblinas/neblina2.tscn"),
+	preload("res://World/bg/neblinas/neblina3.tscn"),
+	preload("res://World/bg/neblinas/neblina4.tscn"),
+	preload("res://World/bg/neblinas/neblina5.tscn")
+]
+
+var rodou = false
+
+func _ready():
+	for i in range(80):
+		randomize()
+		var random = Vector2(rand_range(633,27034),rand_range(-1800,3500))
+		var x = randi() % neblinas.size()
+		var scene = neblinas[x].instance()
+		$neblinasFull.add_child(scene)
+		scene.position = random
+		
+	for i in range(80):
+		randomize()
+		var random = Vector2(rand_range(633,27034),rand_range(-1800,3500))
+		var x = randi() % neblinas.size()
+		var scene = neblinas[x].instance()
+		$neblinasFull2.add_child(scene)
+		scene.position = random
+	
 func _physics_process(_delta):
+	
+	for i in range($neblinasFull.get_child_count() ):
+		randomize()
+		var neblina = $neblinasFull.get_child(i)
+		neblina.position.x += 0.5
+		
+	for i in range($neblinasFull2.get_child_count()):
+		randomize()
+		var neblina = $neblinasFull2.get_child(i)
+		neblina.position.x -= 0.5
+	
 	# sem player
 	if not $Player:
 		return get_tree().reload_current_scene()
@@ -28,7 +66,9 @@ func _physics_process(_delta):
 		else:
 			camera_zoom('out')
 			zoom = false
-
+	
+	# programar neblina!
+	
 	
 ## areas de mensagem ( tutorial )
 func _on_gui_up_area_body_entered(_body):
