@@ -16,7 +16,7 @@ var neblinas = [
 var rodou = false
 
 func _ready():
-	for i in range(80):
+	for i in range(50):
 		randomize()
 		var random = Vector2(rand_range(633,27034),rand_range(-1800,3500))
 		var x = randi() % neblinas.size()
@@ -24,7 +24,7 @@ func _ready():
 		$neblinasFull.add_child(scene)
 		scene.position = random
 		
-	for i in range(80):
+	for i in range(50):
 		randomize()
 		var random = Vector2(rand_range(633,27034),rand_range(-1800,3500))
 		var x = randi() % neblinas.size()
