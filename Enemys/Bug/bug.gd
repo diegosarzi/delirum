@@ -54,6 +54,6 @@ func _on_attack_area_body_exited(_body):
 	state_machine.travel("walk")
 
 func _on_damage_area_body_entered(body):
-	if body == get_parent().get_node("Player"):
+	if body == get_parent().get_node("Player") and get_parent().get_node("Player").damage_on:
 		body.life -= 10
 		get_parent().get_node("CanvasLayer/HealthBar")._on_health_updated(body.life,1)

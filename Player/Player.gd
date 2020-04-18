@@ -3,23 +3,37 @@ extends KinematicBody2D
 var SPEED = 500
 const GRAVITY = 50
 const JUMP_POWER = -2000
-
 const FLOOR = Vector2(0, -1)
-
 var velocity = Vector2.ZERO
-
-var life = 100
 var max_boost = 1200
 var bost_time = 0
-
 var weapon = null
 var dist_attack = 150
-
 var damage
+var full_life = 100
+var actual_life = full_life
+var life = full_life
+var direction = 1
+var damage_on = true
 
 onready var animationPlayer = $AnimationPlayer
 
 func _physics_process(delta):
+	
+	if life < actual_life:
+		print('perdeu life')
+		actual_life = life
+		if (direction == 1):
+			position.x = position.x - 100
+			$AnimationPlayerDamage.play("damage")
+			damage_on = false
+			$Timer.start()
+		else:
+			position.x = position.x + 100
+			$AnimationPlayerDamage.play("damage")
+			damage_on = false
+			$Timer.start()
+			
 
 	if $AnimationTree.weapon == "sword":
 		damage = 3
@@ -44,10 +58,12 @@ func _physics_process(delta):
 		velocity.x = SPEED
 		$Sprite.set_flip_h(false)
 		$Area2D/attack.position.x = dist_attack
+		direction = 1
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x = -SPEED
 		$Sprite.set_flip_h(true)
 		$Area2D/attack.position.x = -dist_attack
+		direction = 0
 	else:
 		velocity.x = 0
 		
@@ -69,6 +85,9 @@ func _on_Area2D_body_entered(body):
 		body.position.x -= 120
 		
 	body.state_machine.travel('damage')
-	print(damage)
 	body.life -= damage
 	body.get_node("HealthBar")._on_health_updated(body.life,1)
+
+
+func _on_Timer_timeout():
+	damage_on = true

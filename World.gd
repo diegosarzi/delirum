@@ -37,12 +37,12 @@ func _physics_process(_delta):
 	for i in range($neblinasFull.get_child_count() ):
 		randomize()
 		var neblina = $neblinasFull.get_child(i)
-		neblina.position.x += 0.5
+		neblina.position.x += 0.9
 		
 	for i in range($neblinasFull2.get_child_count()):
 		randomize()
 		var neblina = $neblinasFull2.get_child(i)
-		neblina.position.x -= 0.5
+		neblina.position.x -= 0.9
 	
 	# sem player
 	if not $Player:

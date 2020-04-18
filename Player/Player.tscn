@@ -1,9 +1,24 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://Player/walk2.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Player/AnimationTree.gd" type="Script" id=3]
 [ext_resource path="res://Player/Bars/HealthBar.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=73]
+resource_name = "damage"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
@@ -427,7 +442,10 @@ rect_scale = Vector2( 0.652996, 0.652996 )
 texture = ExtResource( 1 )
 vframes = 10
 hframes = 11
-frame = 99
+frame = 56
+
+[node name="AnimationPlayerDamage" type="AnimationPlayer" parent="."]
+anims/damage = SubResource( 73 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )
@@ -466,4 +484,9 @@ smoothing_enabled = true
 position = Vector2( 150, -64.286 )
 shape = SubResource( 72 )
 disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
