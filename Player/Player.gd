@@ -53,6 +53,9 @@ func _physics_process(delta):
 		if(SPEED > 600):
 			SPEED -= SPEED * delta
 			velocity.x = SPEED
+			
+	if Input.is_action_just_pressed("teste"):
+		$AnimationPower.play("power")
 	
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = SPEED
